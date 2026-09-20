@@ -40,16 +40,29 @@ a:hover { color: var(--color-accent); }
 .hamburger-btn { display: none; }
 .mobile-menu { display: none; }
 .book-mobile { display: none; }
+.mobile-actions { display: none; }
 .mm-row .mm-dot { width: 6px; height: 6px; border-radius: 50%; background: transparent; flex-shrink: 0; }
 .mm-row:active { background: var(--color-accent-100); }
 .mm-row.mm-active { color: var(--color-accent-700); font-weight: 600; background: var(--color-accent-100); }
 .mm-row.mm-active .mm-dot { background: var(--color-accent-700); }
 .svc-swipe { display: flex; gap: 12px; overflow-x: auto; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; }
 .svc-swipe-card { flex: 0 0 200px; scroll-snap-align: start; }
+.swipe-hint-arrow { animation: swipe-nudge 1.6s ease-in-out infinite; }
+@keyframes swipe-nudge { 0%, 100% { transform: translateX(0); } 50% { transform: translateX(4px); } }
+@media (prefers-reduced-motion: reduce) { .swipe-hint-arrow { animation: none; } }
 .reveal { opacity: 0; transform: translateY(18px); transition: opacity 0.6s ease, transform 0.6s ease; }
 .reveal.reveal-visible { opacity: 1; transform: translateY(0); }
+.reveal-stagger > * { opacity: 0; transform: translateY(16px); transition: opacity 0.5s ease, transform 0.5s ease; }
+.reveal-stagger.reveal-visible > * { opacity: 1; transform: translateY(0); }
+.reveal-stagger > *:nth-child(1) { transition-delay: 0.03s; }
+.reveal-stagger > *:nth-child(2) { transition-delay: 0.11s; }
+.reveal-stagger > *:nth-child(3) { transition-delay: 0.19s; }
+.reveal-stagger > *:nth-child(4) { transition-delay: 0.27s; }
+.reveal-stagger > *:nth-child(5) { transition-delay: 0.35s; }
+.reveal-stagger > *:nth-child(n+6) { transition-delay: 0.43s; }
 @media (prefers-reduced-motion: reduce) {
   .reveal { opacity: 1; transform: none; transition: none; }
+  .reveal-stagger > * { opacity: 1; transform: none; transition: none; }
 }
 @media (max-width: 760px) {
   .nav { flex-wrap: wrap; row-gap: 8px; }
@@ -61,6 +74,7 @@ a:hover { color: var(--color-accent); }
   .mobile-menu[data-open="true"] { display: flex; }
   .book-desktop { display: none; }
   .book-mobile { display: inline-flex; }
+  .mobile-actions { display: flex; align-items: center; gap: 8px; margin-left: auto; }
 }
 </style>
 </helmet>
@@ -70,22 +84,22 @@ a:hover { color: var(--color-accent); }
 <div style="min-height: 100vh; font-family: var(--font-body); background: var(--color-bg); color: var(--color-text);">
 
   <nav class="nav" style="padding-inline: clamp(20px, 5vw, 72px);">
-    <div style="display: flex; align-items: center; gap: 14px;">
-      <span class="nav-brand" style="display: inline-flex; align-items: center; gap: 9px; font-size: 17px; letter-spacing: -0.01em;">
-        <img src="./favicon.svg" alt="" width="24" height="24" style="display: block; flex-shrink: 0;" />
-        J Joseph Enterprises <span style="color: var(--color-accent-700);">LLC</span>
-      </span>
-      <button type="button" class="btn btn-primary book-mobile" onClick="{{ goContact }}" style="font-size: 12px; padding: 6px 13px; flex-shrink: 0;">Book</button>
-    </div>
+    <span class="nav-brand" style="display: inline-flex; align-items: center; gap: 9px; font-size: 17px; letter-spacing: -0.01em;">
+      <img src="./favicon.svg" alt="" width="24" height="24" style="display: block; flex-shrink: 0;" />
+      J Joseph Enterprises <span style="color: var(--color-accent-700);">LLC</span>
+    </span>
     <a href="#home" onClick="{{ goHome }}" aria-current="{{ curHome }}" style="font-size: 13px; letter-spacing: 0.06em; text-transform: uppercase; text-decoration: none; color: color-mix(in srgb, var(--color-text) 75%, transparent); white-space: nowrap;" style-hover="color: var(--color-accent-700);">Home</a>
     <a href="#services" onClick="{{ goServices }}" aria-current="{{ curServices }}" style="font-size: 13px; letter-spacing: 0.06em; text-transform: uppercase; text-decoration: none; color: color-mix(in srgb, var(--color-text) 75%, transparent); white-space: nowrap;" style-hover="color: var(--color-accent-700);">Services</a>
     <a href="#about" onClick="{{ goAbout }}" aria-current="{{ curAbout }}" style="font-size: 13px; letter-spacing: 0.06em; text-transform: uppercase; text-decoration: none; color: color-mix(in srgb, var(--color-text) 75%, transparent); white-space: nowrap;" style-hover="color: var(--color-accent-700);">About</a>
-    <button type="button" class="btn btn-primary book-desktop" onClick="{{ goContact }}" style="font-size: 13px;">Book a call</button>
-    <button type="button" class="hamburger-btn" onClick="{{ toggleMenu }}" aria-label="Menu" aria-expanded="{{ menuOpen }}" style="align-items: center; justify-content: center; width: 36px; height: 36px; padding: 0; border: 1px solid var(--color-divider); border-radius: var(--radius-md); background: none; cursor: pointer; flex-direction: column; gap: 4px; margin-left: auto;">
-      <span style="display: block; width: 18px; height: 2px; background: var(--color-text); border-radius: 1px;"></span>
-      <span style="display: block; width: 18px; height: 2px; background: var(--color-text); border-radius: 1px;"></span>
-      <span style="display: block; width: 18px; height: 2px; background: var(--color-text); border-radius: 1px;"></span>
-    </button>
+    <button type="button" class="btn btn-primary book-desktop" onClick="{{ goContact }}" style="font-size: 13px; margin-left: auto;">Book a call</button>
+    <div class="mobile-actions">
+      <button type="button" class="hamburger-btn" onClick="{{ toggleMenu }}" aria-label="Menu" aria-expanded="{{ menuOpen }}" style="align-items: center; justify-content: center; width: 36px; height: 36px; padding: 0; border: 1px solid var(--color-divider); border-radius: var(--radius-md); background: none; cursor: pointer; flex-direction: column; gap: 4px;">
+        <span style="display: block; width: 18px; height: 2px; background: var(--color-text); border-radius: 1px;"></span>
+        <span style="display: block; width: 18px; height: 2px; background: var(--color-text); border-radius: 1px;"></span>
+        <span style="display: block; width: 18px; height: 2px; background: var(--color-text); border-radius: 1px;"></span>
+      </button>
+      <button type="button" class="btn btn-primary book-mobile" onClick="{{ goContact }}" style="font-size: 12px; padding: 6px 13px; flex-shrink: 0;">Book</button>
+    </div>
   </nav>
 
   <div class="mobile-menu" data-open="{{ menuOpenAttr }}" style="flex-direction: column; padding: 8px clamp(20px, 5vw, 72px) 18px; border-bottom: 1px solid var(--color-divider);">
@@ -112,9 +126,16 @@ a:hover { color: var(--color-accent); }
         </section>
 
         <section class="reveal" style="padding: 0 0 56px;">
+          <hr style="height: 0; border: 0; border-top: 1px solid var(--color-text); margin: 0 0 24px;" />
           <span style="display: block; font-size: 13px; line-height: 14px; letter-spacing: 0.08em; text-transform: uppercase; color: color-mix(in srgb, var(--color-text) 70%, transparent); margin: 0 0 14px;">What I do</span>
-          <p style="font-size: 16px; line-height: 27px; margin: 0; max-width: 60ch;">Personal &amp; business taxes &middot; Tax planning &middot; Financial advisory &middot; Retirement planning</p>
-          <p style="font-size: 14.5px; line-height: 24px; margin: 10px 0 0; color: color-mix(in srgb, var(--color-text) 68%, transparent);">Six years in practice, CPA, based in New York, working with clients everywhere, fully remote.</p>
+          <div class="reveal-stagger" style="display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 16px;">
+            <span class="tag tag-accent">Personal &amp; business taxes</span>
+            <span class="tag tag-accent">Tax planning</span>
+            <span class="tag tag-accent">Financial advisory</span>
+            <span class="tag tag-accent">Retirement planning</span>
+          </div>
+          <p style="font-size: 14.5px; line-height: 24px; margin: 0; color: color-mix(in srgb, var(--color-text) 68%, transparent);">Six years in practice, CPA, working with clients everywhere, fully remote.</p>
+          <hr style="height: 0; border: 0; border-top: 1px solid var(--color-text); margin: 24px 0 0;" />
         </section>
 
         <section class="reveal" aria-label="At a glance" style="padding: 0 0 84px;">
@@ -126,7 +147,11 @@ a:hover { color: var(--color-accent); }
             <span>Fully remote</span>
           </p>
           <hr style="height: 0; border: 0; border-top: 1px solid var(--color-text); margin: 0;" />
-          <div class="svc-swipe" style="padding: 20px 0 12px;">
+          <div class="swipe-hint" style="display: flex; align-items: center; gap: 6px; margin: 14px 0 0; font-size: 12px; letter-spacing: 0.04em; text-transform: uppercase; color: color-mix(in srgb, var(--color-text) 55%, transparent);">
+            Swipe to see all services
+            <svg class="swipe-hint-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M4 12h16M14 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <div class="svc-swipe reveal-stagger" style="padding: 12px 0 12px;">
             <button type="button" class="card svc-swipe-card" onClick="{{ pickTaxes }}" style="align-items: flex-start; text-align: left; font: inherit; color: inherit; cursor: pointer; padding: 18px; gap: 8px; border: 1px solid var(--color-divider);" style-hover="border-color: var(--color-accent); box-shadow: var(--shadow-md);" style-active="border-color: var(--color-accent-700);">
               <span aria-hidden="true" style="display: inline-flex; align-items: center; justify-content: center; width: 34px; height: 34px; border-radius: var(--radius-md); background: var(--color-accent-100);">
                 <svg width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M6 2h9l5 5v15a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1Z" stroke="var(--color-accent-700)" stroke-width="1.6" stroke-linejoin="round"/><path d="M15 2v5h5" stroke="var(--color-accent-700)" stroke-width="1.6" stroke-linejoin="round"/><path d="M8.5 13h7M8.5 16.5h7M8.5 9.5h3" stroke="var(--color-accent-700)" stroke-width="1.6" stroke-linecap="round"/></svg>
@@ -155,24 +180,100 @@ a:hover { color: var(--color-accent); }
         </section>
 
         <section class="reveal" style="padding: 0 0 56px;">
-          <span style="display: block; font-size: 13px; line-height: 14px; letter-spacing: 0.08em; text-transform: uppercase; color: color-mix(in srgb, var(--color-text) 70%, transparent); margin: 0 0 14px;">How the work goes</span>
-          <p style="font-size: 15.5px; line-height: 27px; margin: 0; max-width: 60ch; color: color-mix(in srgb, var(--color-text) 78%, transparent);">The person who prepares your return is the person who answers the phone in July, and every figure comes with a plain explanation of why it is what it is. Planning happens before the next year closes, not after.</p>
+          <span style="display: block; font-size: 13px; line-height: 14px; letter-spacing: 0.08em; text-transform: uppercase; color: color-mix(in srgb, var(--color-text) 70%, transparent); margin: 0 0 14px;">What to expect</span>
+          <p style="font-size: 15.5px; line-height: 27px; margin: 0; max-width: 60ch; color: color-mix(in srgb, var(--color-text) 78%, transparent);">The person who prepares your return is the person who answers the phone, year round, not just at filing time. Every figure comes with a plain explanation of why it is what it is, and planning happens before the next year closes, not after.</p>
         </section>
 
         <section class="reveal" style="padding: 0 0 84px;">
-          <span style="display: block; font-size: 13px; line-height: 14px; letter-spacing: 0.08em; text-transform: uppercase; color: color-mix(in srgb, var(--color-text) 70%, transparent); margin: 0 0 14px;">What clients say</span>
-          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px; margin-top: 14px;">
-            <div class="card" style="padding: 24px; gap: 12px; border: 1px solid var(--color-divider);">
-              <p style="font-style: italic; font-size: 15px; line-height: 26px; margin: 0; color: color-mix(in srgb, var(--color-text) 80%, transparent);">Client feedback will go here.</p>
-              <p style="font-size: 13px; margin: 0; color: color-mix(in srgb, var(--color-text) 62%, transparent);">Client name &middot; Service</p>
+          <span style="display: block; font-size: 13px; line-height: 14px; letter-spacing: 0.08em; text-transform: uppercase; color: color-mix(in srgb, var(--color-text) 70%, transparent); margin: 0 0 14px;">Why choose J Joseph Enterprises</span>
+          <div class="reveal-stagger" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 32px clamp(28px, 4vw, 64px); margin-top: 14px;">
+            <div style="display: flex; gap: 12px;">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" style="flex-shrink: 0; margin-top: 3px;"><path d="M4 12.5 9.5 18 20 6" stroke="var(--color-accent-700)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <div>
+                <h2 style="font-family: var(--font-heading); font-style: italic; font-weight: 600; font-size: 19px; margin: 0;">Personal attention</h2>
+                <p style="font-size: 14.5px; line-height: 24px; margin: 8px 0 0; color: color-mix(in srgb, var(--color-text) 78%, transparent);">Every return is prepared by Jaison himself, never passed off to whoever is free that week.</p>
+              </div>
             </div>
-            <div class="card" style="padding: 24px; gap: 12px; border: 1px solid var(--color-divider);">
-              <p style="font-style: italic; font-size: 15px; line-height: 26px; margin: 0; color: color-mix(in srgb, var(--color-text) 80%, transparent);">Client feedback will go here.</p>
-              <p style="font-size: 13px; margin: 0; color: color-mix(in srgb, var(--color-text) 62%, transparent);">Client name &middot; Service</p>
+            <div style="display: flex; gap: 12px;">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" style="flex-shrink: 0; margin-top: 3px;"><path d="M4 12.5 9.5 18 20 6" stroke="var(--color-accent-700)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <div>
+                <h2 style="font-family: var(--font-heading); font-style: italic; font-weight: 600; font-size: 19px; margin: 0;">Straight answers</h2>
+                <p style="font-size: 14.5px; line-height: 24px; margin: 8px 0 0; color: color-mix(in srgb, var(--color-text) 78%, transparent);">No jargon, no surprises. Every figure is explained in plain language before anything is filed.</p>
+              </div>
             </div>
-            <div class="card" style="padding: 24px; gap: 12px; border: 1px solid var(--color-divider);">
-              <p style="font-style: italic; font-size: 15px; line-height: 26px; margin: 0; color: color-mix(in srgb, var(--color-text) 80%, transparent);">Client feedback will go here.</p>
-              <p style="font-size: 13px; margin: 0; color: color-mix(in srgb, var(--color-text) 62%, transparent);">Client name &middot; Service</p>
+            <div style="display: flex; gap: 12px;">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" style="flex-shrink: 0; margin-top: 3px;"><path d="M4 12.5 9.5 18 20 6" stroke="var(--color-accent-700)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <div>
+                <h2 style="font-family: var(--font-heading); font-style: italic; font-weight: 600; font-size: 19px; margin: 0;">Year-round access</h2>
+                <p style="font-size: 14.5px; line-height: 24px; margin: 8px 0 0; color: color-mix(in srgb, var(--color-text) 78%, transparent);">Questions don't wait for April. Reach the same person who filed your return any time of year.</p>
+              </div>
+            </div>
+            <div style="display: flex; gap: 12px;">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" style="flex-shrink: 0; margin-top: 3px;"><path d="M4 12.5 9.5 18 20 6" stroke="var(--color-accent-700)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <div>
+                <h2 style="font-family: var(--font-heading); font-style: italic; font-weight: 600; font-size: 19px; margin: 0;">Transparent pricing</h2>
+                <p style="font-size: 14.5px; line-height: 24px; margin: 8px 0 0; color: color-mix(in srgb, var(--color-text) 78%, transparent);">Pricing is discussed together before any work starts. Nothing appears on the invoice as a surprise.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="reveal" style="padding: 0 0 84px;">
+          <div style="position: relative; border-radius: var(--radius-md); overflow: hidden; padding: clamp(48px, 8vw, 84px) clamp(24px, 6vw, 56px); text-align: center;">
+            <svg width="100%" height="100%" viewBox="0 0 800 420" preserveAspectRatio="xMidYMax slice" style="position: absolute; inset: 0; z-index: 0;">
+              <defs>
+                <linearGradient id="nycSky" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#0d1f2e"/>
+                  <stop offset="55%" stop-color="#1c3b3a"/>
+                  <stop offset="100%" stop-color="#5a3d2b"/>
+                </linearGradient>
+                <linearGradient id="nycFade" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#0a1810" stop-opacity="0.15"/>
+                  <stop offset="100%" stop-color="#050d09" stop-opacity="0.82"/>
+                </linearGradient>
+              </defs>
+              <rect width="800" height="420" fill="url(#nycSky)"/>
+              <g fill="#040907">
+                <rect x="0" y="260" width="40" height="160"/>
+                <rect x="45" y="220" width="55" height="200"/>
+                <rect x="105" y="280" width="35" height="140"/>
+                <rect x="145" y="180" width="30" height="240"/>
+                <rect x="180" y="240" width="60" height="180"/>
+                <rect x="245" y="140" width="26" height="280"/>
+                <polygon points="245,140 258,90 271,140"/>
+                <rect x="276" y="230" width="50" height="190"/>
+                <rect x="331" y="190" width="40" height="230"/>
+                <rect x="376" y="250" width="45" height="170"/>
+                <rect x="426" y="160" width="34" height="260"/>
+                <rect x="465" y="270" width="55" height="150"/>
+                <rect x="525" y="200" width="38" height="220"/>
+                <rect x="568" y="235" width="60" height="185"/>
+                <rect x="633" y="170" width="30" height="250"/>
+                <rect x="668" y="245" width="48" height="175"/>
+                <rect x="721" y="205" width="36" height="215"/>
+                <rect x="762" y="255" width="38" height="165"/>
+              </g>
+              <g fill="#F2C572" opacity="0.85">
+                <rect x="20" y="300" width="5" height="7"/><rect x="32" y="300" width="5" height="7"/><rect x="20" y="322" width="5" height="7"/><rect x="32" y="322" width="5" height="7"/><rect x="20" y="344" width="5" height="7"/><rect x="32" y="344" width="5" height="7"/>
+                <rect x="59" y="245" width="5" height="7"/><rect x="75" y="245" width="5" height="7"/><rect x="59" y="267" width="5" height="7"/><rect x="75" y="267" width="5" height="7"/><rect x="59" y="289" width="5" height="7"/><rect x="75" y="289" width="5" height="7"/>
+                <rect x="189" y="265" width="5" height="7"/><rect x="205" y="265" width="5" height="7"/><rect x="221" y="265" width="5" height="7"/><rect x="189" y="287" width="5" height="7"/><rect x="205" y="287" width="5" height="7"/><rect x="221" y="287" width="5" height="7"/>
+                <rect x="335" y="215" width="5" height="7"/><rect x="351" y="215" width="5" height="7"/><rect x="335" y="237" width="5" height="7"/><rect x="351" y="237" width="5" height="7"/>
+                <rect x="431" y="185" width="5" height="7"/><rect x="447" y="185" width="5" height="7"/><rect x="431" y="207" width="5" height="7"/><rect x="447" y="207" width="5" height="7"/><rect x="431" y="229" width="5" height="7"/><rect x="447" y="229" width="5" height="7"/>
+                <rect x="572" y="260" width="5" height="7"/><rect x="588" y="260" width="5" height="7"/><rect x="604" y="260" width="5" height="7"/><rect x="572" y="282" width="5" height="7"/><rect x="588" y="282" width="5" height="7"/><rect x="604" y="282" width="5" height="7"/>
+                <rect x="726" y="230" width="5" height="7"/><rect x="742" y="230" width="5" height="7"/><rect x="726" y="252" width="5" height="7"/><rect x="742" y="252" width="5" height="7"/>
+              </g>
+              <rect width="800" height="420" fill="url(#nycFade)"/>
+            </svg>
+            <div style="position: relative; z-index: 1; max-width: 640px; margin: 0 auto;">
+              <div style="display: flex; justify-content: center; gap: 4px; margin-bottom: 22px;">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="#E8B84B"><path d="M12 2.5l2.9 6.6 7.1.7-5.4 4.8 1.6 7-6.2-3.8-6.2 3.8 1.6-7-5.4-4.8 7.1-.7z"/></svg>
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="#E8B84B"><path d="M12 2.5l2.9 6.6 7.1.7-5.4 4.8 1.6 7-6.2-3.8-6.2 3.8 1.6-7-5.4-4.8 7.1-.7z"/></svg>
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="#E8B84B"><path d="M12 2.5l2.9 6.6 7.1.7-5.4 4.8 1.6 7-6.2-3.8-6.2 3.8 1.6-7-5.4-4.8 7.1-.7z"/></svg>
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="#E8B84B"><path d="M12 2.5l2.9 6.6 7.1.7-5.4 4.8 1.6 7-6.2-3.8-6.2 3.8 1.6-7-5.4-4.8 7.1-.7z"/></svg>
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="#E8B84B"><path d="M12 2.5l2.9 6.6 7.1.7-5.4 4.8 1.6 7-6.2-3.8-6.2 3.8 1.6-7-5.4-4.8 7.1-.7z"/></svg>
+              </div>
+              <p style="font-family: var(--font-heading); font-style: italic; font-weight: 500; font-size: clamp(19px, 2.6vw, 25px); line-height: 1.5; color: #ffffff; margin: 0;">"Jaison turned our taxes from a yearly source of stress into something straightforward, and he found savings our previous preparer missed. Every figure was explained clearly before anything was filed. I recommend him to every business owner I know."</p>
+              <p style="font-size: 13px; letter-spacing: 0.05em; text-transform: uppercase; color: rgba(255,255,255,0.7); margin: 24px 0 0;">Ek Din Consulting</p>
             </div>
           </div>
         </section>
@@ -388,7 +489,7 @@ a:hover { color: var(--color-accent); }
     </sc-if>
 
     <footer style="padding: 28px 0 56px; font-size: 13px; line-height: 28px; color: color-mix(in srgb, var(--color-text) 68%, transparent); border-top: 1px solid var(--color-divider); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px 28px;">
-      <span>&copy; 2026 J Joseph Enterprises LLC. All rights reserved.</span>
+      <span>&copy; 2020 J Joseph Enterprises LLC. All rights reserved.</span>
       <span style="display: flex; gap: 8px 20px; flex-wrap: wrap;">
         <span>Tax preparation · Planning · Advisory · Retirement</span>
         <a href="#privacy" onClick="{{ goPrivacy }}" style="color: inherit; text-decoration: underline; text-underline-offset: 3px;">Privacy Policy</a>
@@ -432,7 +533,7 @@ class Component extends DCLogic {
   observeReveals() {
     if (!this._revealObserver) return;
     requestAnimationFrame(() => {
-      document.querySelectorAll('.reveal:not(.reveal-visible)').forEach((el) => this._revealObserver.observe(el));
+      document.querySelectorAll('.reveal:not(.reveal-visible), .reveal-stagger:not(.reveal-visible)').forEach((el) => this._revealObserver.observe(el));
     });
   }
 
