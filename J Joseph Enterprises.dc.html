@@ -46,6 +46,11 @@ a:hover { color: var(--color-accent); }
 .mm-row.mm-active .mm-dot { background: var(--color-accent-700); }
 .svc-swipe { display: flex; gap: 12px; overflow-x: auto; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; }
 .svc-swipe-card { flex: 0 0 200px; scroll-snap-align: start; }
+.reveal { opacity: 0; transform: translateY(18px); transition: opacity 0.6s ease, transform 0.6s ease; }
+.reveal.reveal-visible { opacity: 1; transform: translateY(0); }
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; transition: none; }
+}
 @media (max-width: 760px) {
   .nav { flex-wrap: wrap; row-gap: 8px; }
   [data-contact-grid], [data-svc-row], [data-photo-row] { grid-template-columns: 1fr !important; }
@@ -383,7 +388,7 @@ a:hover { color: var(--color-accent); }
     </sc-if>
 
     <footer style="padding: 28px 0 56px; font-size: 13px; line-height: 28px; color: color-mix(in srgb, var(--color-text) 68%, transparent); border-top: 1px solid var(--color-divider); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px 28px;">
-      <span>J Joseph Enterprises LLC · Jaison Joseph</span>
+      <span>&copy; 2026 J Joseph Enterprises LLC. All rights reserved.</span>
       <span style="display: flex; gap: 8px 20px; flex-wrap: wrap;">
         <span>Tax preparation · Planning · Advisory · Retirement</span>
         <a href="#privacy" onClick="{{ goPrivacy }}" style="color: inherit; text-decoration: underline; text-underline-offset: 3px;">Privacy Policy</a>
@@ -411,10 +416,29 @@ class Component extends DCLogic {
         this.setState({ page: hh, menuOpen: false });
       }
     });
+    if ('IntersectionObserver' in window) {
+      this._revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('reveal-visible');
+            this._revealObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    }
+    this.observeReveals();
+  }
+
+  observeReveals() {
+    if (!this._revealObserver) return;
+    requestAnimationFrame(() => {
+      document.querySelectorAll('.reveal:not(.reveal-visible)').forEach((el) => this._revealObserver.observe(el));
+    });
   }
 
   componentDidUpdate(prev) {
     if (prev.accent !== this.props.accent) this.applyAccent();
+    this.observeReveals();
   }
 
   applyAccent() {
