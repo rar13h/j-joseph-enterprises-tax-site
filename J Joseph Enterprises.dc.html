@@ -47,6 +47,7 @@ a:hover { color: var(--color-accent); }
 .mm-row.mm-active .mm-dot { background: var(--color-accent-700); }
 .svc-swipe { display: flex; gap: 12px; overflow-x: auto; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; }
 .svc-swipe-card { flex: 0 0 200px; scroll-snap-align: start; }
+.swipe-hint { display: flex; }
 .swipe-hint-arrow { animation: swipe-nudge 1.6s ease-in-out infinite; }
 @keyframes swipe-nudge { 0%, 100% { transform: translateX(0); } 50% { transform: translateX(4px); } }
 @media (prefers-reduced-motion: reduce) { .swipe-hint-arrow { animation: none; } }
@@ -68,6 +69,11 @@ a:hover { color: var(--color-accent); }
   .nav { flex-wrap: wrap; row-gap: 8px; }
   [data-contact-grid], [data-svc-row], [data-photo-row] { grid-template-columns: 1fr !important; }
 }
+@media (min-width: 761px) {
+  .swipe-hint { display: none; }
+  .svc-swipe { overflow-x: visible; flex-wrap: wrap; scroll-snap-type: none; }
+  .svc-swipe-card { flex: 1 1 200px; }
+}
 @media (max-width: 480px) {
   .nav a { display: none; }
   .hamburger-btn { display: inline-flex; }
@@ -84,7 +90,7 @@ a:hover { color: var(--color-accent); }
 <div style="min-height: 100vh; font-family: var(--font-body); background: var(--color-bg); color: var(--color-text);">
 
   <nav class="nav" style="padding-inline: clamp(20px, 5vw, 72px);">
-    <span class="nav-brand" style="display: inline-flex; align-items: center; gap: 9px; font-size: 17px; letter-spacing: -0.01em;">
+    <span class="nav-brand" style="display: inline-flex; align-items: center; gap: 9px; font-size: 17px; letter-spacing: -0.01em; margin-right: 0;">
       <img src="./favicon.svg" alt="" width="24" height="24" style="display: block; flex-shrink: 0;" />
       J Joseph Enterprises <span style="color: var(--color-accent-700);">LLC</span>
     </span>
@@ -113,28 +119,45 @@ a:hover { color: var(--color-accent); }
 
     <sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}">
       <div>
-        <section class="reveal" style="padding: 96px 0 56px;">
-          <h1 style="font-family: var(--font-heading); font-weight: 600; font-size: clamp(42px, 6vw, 78px); line-height: 1.08; letter-spacing: -0.02em; margin: 0 0 0 -0.035em;">
-            <span style="display: block;">Keep more</span>
-            <span style="display: block;">of what you earn.</span>
-          </h1>
-          <p style="font-size: 17px; line-height: 28px; max-width: 46ch; margin: 34px 0 0; color: color-mix(in srgb, var(--color-text) 80%, transparent);">Jaison Joseph prepares every return personally, explains every figure in plain language, and looks for savings before anything is filed, not after.</p>
-          <div style="display: flex; gap: 12px; flex-wrap: wrap; margin-top: 34px;">
-            <button type="button" class="btn btn-primary" onClick="{{ goContact }}">Book a call</button>
-            <button type="button" class="btn btn-ghost" onClick="{{ goServices }}">See services</button>
+        <section class="reveal" data-photo-row style="display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: 28px clamp(28px, 5vw, 88px); align-items: center; padding: 96px 0 56px;">
+          <div>
+            <h1 style="font-family: var(--font-heading); font-weight: 600; font-size: clamp(42px, 6vw, 78px); line-height: 1.08; letter-spacing: -0.02em; margin: 0 0 0 -0.035em;">
+              <span style="display: block;">Keep more</span>
+              <span style="display: block;">of what you earn.</span>
+            </h1>
+            <p style="font-size: 17px; line-height: 28px; max-width: 46ch; margin: 34px 0 0; color: color-mix(in srgb, var(--color-text) 80%, transparent);">Jaison Joseph prepares every return personally, explains every figure in plain language, and looks for savings before anything is filed, not after.</p>
+            <div style="display: flex; gap: 12px; flex-wrap: wrap; margin-top: 34px;">
+              <button type="button" class="btn btn-primary" onClick="{{ goContact }}">Book a call</button>
+              <button type="button" class="btn btn-ghost" onClick="{{ goServices }}">See services</button>
+            </div>
           </div>
+          <figure style="margin: 0;">
+            <div style="position: relative; width: 100%; aspect-ratio: 4 / 5; background: var(--color-surface); border: 1px solid var(--color-divider); border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; padding: clamp(16px, 3vw, 32px);">
+              <svg width="100%" height="100%" viewBox="0 0 240 280" style="max-width: 260px;">
+                <line x1="20" y1="240" x2="220" y2="240" stroke="var(--color-divider)" stroke-width="1"/>
+                <rect x="35" y="190" width="26" height="50" rx="3" fill="var(--color-accent-200)"/>
+                <rect x="75" y="160" width="26" height="80" rx="3" fill="var(--color-accent-400)"/>
+                <rect x="115" y="120" width="26" height="120" rx="3" fill="var(--color-accent-600)"/>
+                <rect x="155" y="80" width="26" height="160" rx="3" fill="var(--color-accent-700)"/>
+                <text x="181" y="70" text-anchor="middle" font-family="var(--font-heading)" font-weight="600" font-size="22" fill="var(--color-accent-700)">+18%</text>
+                <text x="120" y="264" text-anchor="middle" font-size="11" fill="color-mix(in srgb, var(--color-text) 62%, transparent)">Return over return, 4-year view</text>
+              </svg>
+            </div>
+          </figure>
         </section>
 
         <section class="reveal" style="padding: 0 0 56px;">
           <hr style="height: 0; border: 0; border-top: 1px solid var(--color-text); margin: 0 0 24px;" />
-          <span style="display: block; font-size: 13px; line-height: 14px; letter-spacing: 0.08em; text-transform: uppercase; color: color-mix(in srgb, var(--color-text) 70%, transparent); margin: 0 0 14px;">What I do</span>
-          <div class="reveal-stagger" style="display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 16px;">
-            <span class="tag tag-accent">Personal &amp; business taxes</span>
-            <span class="tag tag-accent">Tax planning</span>
-            <span class="tag tag-accent">Financial advisory</span>
-            <span class="tag tag-accent">Retirement planning</span>
+          <div style="max-width: 640px;">
+            <span style="display: block; font-size: 13px; line-height: 14px; letter-spacing: 0.08em; text-transform: uppercase; color: color-mix(in srgb, var(--color-text) 70%, transparent); margin: 0 0 14px;">What I do</span>
+            <div class="reveal-stagger" style="display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 16px;">
+              <span class="tag tag-accent">Personal &amp; business taxes</span>
+              <span class="tag tag-accent">Tax planning</span>
+              <span class="tag tag-accent">Financial advisory</span>
+              <span class="tag tag-accent">Retirement planning</span>
+            </div>
+            <p style="font-size: 14.5px; line-height: 24px; margin: 0; color: color-mix(in srgb, var(--color-text) 68%, transparent);">Six years in practice, CPA, working with clients everywhere, fully remote.</p>
           </div>
-          <p style="font-size: 14.5px; line-height: 24px; margin: 0; color: color-mix(in srgb, var(--color-text) 68%, transparent);">Six years in practice, CPA, working with clients everywhere, fully remote.</p>
           <hr style="height: 0; border: 0; border-top: 1px solid var(--color-text); margin: 24px 0 0;" />
         </section>
 
@@ -147,7 +170,7 @@ a:hover { color: var(--color-accent); }
             <span>Fully remote</span>
           </p>
           <hr style="height: 0; border: 0; border-top: 1px solid var(--color-text); margin: 0;" />
-          <div class="swipe-hint" style="display: flex; align-items: center; gap: 6px; margin: 14px 0 0; font-size: 12px; letter-spacing: 0.04em; text-transform: uppercase; color: color-mix(in srgb, var(--color-text) 55%, transparent);">
+          <div class="swipe-hint" style="align-items: center; gap: 6px; margin: 14px 0 0; font-size: 12px; letter-spacing: 0.04em; text-transform: uppercase; color: color-mix(in srgb, var(--color-text) 55%, transparent);">
             Swipe to see all services
             <svg class="swipe-hint-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M4 12h16M14 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </div>
