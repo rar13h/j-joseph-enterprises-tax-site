@@ -104,7 +104,7 @@ a:hover { color: var(--color-accent); }
   <nav class="nav" style="padding-inline: clamp(20px, 5vw, 72px);">
     <span class="nav-brand" style="display: inline-flex; align-items: center; gap: 9px; font-size: 17px; letter-spacing: -0.01em;">
       <img src="./favicon.svg" alt="" width="24" height="24" style="display: block; flex-shrink: 0;" />
-      J Joseph Enterprises <span style="color: var(--color-accent-700);">LLC</span>
+      Jaison Joseph, <span style="color: var(--color-accent-700);">CPA</span>
     </span>
     <a href="#home" onClick="{{ goHome }}" aria-current="{{ curHome }}" style="font-size: 13px; letter-spacing: 0.06em; text-transform: uppercase; text-decoration: none; color: color-mix(in srgb, var(--color-text) 75%, transparent); white-space: nowrap;" style-hover="color: var(--color-accent-700);">Home</a>
     <a href="#services" onClick="{{ goServices }}" aria-current="{{ curServices }}" style="font-size: 13px; letter-spacing: 0.06em; text-transform: uppercase; text-decoration: none; color: color-mix(in srgb, var(--color-text) 75%, transparent); white-space: nowrap;" style-hover="color: var(--color-accent-700);">Services</a>
@@ -137,9 +137,14 @@ a:hover { color: var(--color-accent); }
               <span style="display: block;">Keep more</span>
               <span style="display: block;">of what you earn.</span>
             </h1>
-            <p style="font-size: 17px; line-height: 28px; max-width: 46ch; margin: 34px 0 0; color: color-mix(in srgb, var(--color-text) 80%, transparent);">Jaison Joseph prepares every return personally, explains every figure in plain language, and looks for savings before anything is filed, not after.</p>
-            <div style="display: flex; gap: 12px; flex-wrap: wrap; margin-top: 34px;">
-              <button type="button" class="btn btn-primary" onClick="{{ goContact }}">Book a consultation</button>
+            <p style="font-family: var(--font-heading); font-weight: 600; font-size: 19px; line-height: 29px; max-width: 54ch; margin: 34px 0 0;">Understand your finances. Plan your next move.</p>
+            <p style="font-size: 17px; line-height: 28px; max-width: 54ch; margin: 14px 0 0; color: color-mix(in srgb, var(--color-text) 80%, transparent);">Accounting, tax, and financial guidance for individuals and business owners.</p>
+            <p style="font-size: 15.5px; line-height: 27px; max-width: 54ch; margin: 20px 0 0; color: color-mix(in srgb, var(--color-text) 78%, transparent);">I'm Jaison Joseph, CPA, founder of J Joseph Enterprises LLC. I help clients organize their finances, understand their numbers, and make informed decisions: from managing cash flow and planning for major expenses, to keeping accurate books and preparing personal and business tax returns.</p>
+            <p style="font-size: 15.5px; line-height: 27px; max-width: 54ch; margin: 20px 0 0; color: color-mix(in srgb, var(--color-text) 78%, transparent);">Whether you need personal or business tax preparation, proactive tax planning, or ongoing financial guidance, we'll work together to understand your situation and develop practical next steps.</p>
+            <p style="font-size: 15.5px; line-height: 27px; max-width: 54ch; margin: 20px 0 0; color: color-mix(in srgb, var(--color-text) 78%, transparent);">You'll work directly with me, with clear explanations and a scope and fee agreed upon before work begins.</p>
+            <p style="font-family: var(--font-heading); font-weight: 600; font-size: 15px; margin: 28px 0 0;">Let's discuss your goals.</p>
+            <div style="display: flex; gap: 12px; flex-wrap: wrap; margin-top: 16px;">
+              <button type="button" class="btn btn-primary" onClick="{{ goContact }}">Request a consultation</button>
               <button type="button" class="btn btn-ghost" onClick="{{ goServices }}">See services</button>
             </div>
           </div>
@@ -166,29 +171,47 @@ a:hover { color: var(--color-accent); }
             <svg class="swipe-hint-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M4 12h16M14 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </div>
           <div class="svc-swipe reveal-stagger" style="padding: 12px 0 12px;">
-            <button type="button" class="card svc-swipe-card" onClick="{{ pickTaxes }}" style="align-items: flex-start; text-align: left; font: inherit; color: inherit; cursor: pointer; padding: 18px; gap: 8px; border: 1px solid var(--color-divider);" style-hover="border-color: var(--color-accent); box-shadow: var(--shadow-md);" style-active="border-color: var(--color-accent-700);">
+            <button type="button" class="card svc-swipe-card" onClick="{{ pickAccounting }}" style="align-items: flex-start; text-align: left; font: inherit; color: inherit; cursor: pointer; padding: 18px; gap: 8px; border: 1px solid var(--color-divider);" style-hover="border-color: var(--color-accent); box-shadow: var(--shadow-md);" style-active="border-color: var(--color-accent-700);">
               <span aria-hidden="true" style="display: inline-flex; align-items: center; justify-content: center; width: 34px; height: 34px; border-radius: var(--radius-md); background: var(--color-accent-100);">
-                <svg width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M6 2h9l5 5v15a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1Z" stroke="var(--color-accent-700)" stroke-width="1.6" stroke-linejoin="round"/><path d="M15 2v5h5" stroke="var(--color-accent-700)" stroke-width="1.6" stroke-linejoin="round"/><path d="M8.5 13h7M8.5 16.5h7M8.5 9.5h3" stroke="var(--color-accent-700)" stroke-width="1.6" stroke-linecap="round"/></svg>
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none"><rect x="4" y="3" width="16" height="18" rx="2" stroke="var(--color-accent-700)" stroke-width="1.6"/><path d="M8 8h8M8 12h8M8 16h5" stroke="var(--color-accent-700)" stroke-width="1.6" stroke-linecap="round"/></svg>
               </span>
-              <span style="font-family: var(--font-heading); font-weight: 600; font-size: 14.5px; letter-spacing: -0.01em;">Personal and business taxes</span>
-            </button>
-            <button type="button" class="card svc-swipe-card" onClick="{{ pickPlanning }}" style="align-items: flex-start; text-align: left; font: inherit; color: inherit; cursor: pointer; padding: 18px; gap: 8px; border: 1px solid var(--color-divider);" style-hover="border-color: var(--color-accent); box-shadow: var(--shadow-md);" style-active="border-color: var(--color-accent-700);">
-              <span aria-hidden="true" style="display: inline-flex; align-items: center; justify-content: center; width: 34px; height: 34px; border-radius: var(--radius-md); background: var(--color-accent-100);">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M3 17c2.5-6 4.5-9 6.5-9s2 3.5 4 3.5 3-5.5 5.5-5.5" stroke="var(--color-accent-700)" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/><path d="M15.5 6.3 19.5 5.7 19 9.7" stroke="var(--color-accent-700)" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              </span>
-              <span style="font-family: var(--font-heading); font-weight: 600; font-size: 14.5px; letter-spacing: -0.01em;">Tax planning</span>
+              <span style="font-family: var(--font-heading); font-weight: 600; font-size: 14.5px; letter-spacing: -0.01em;">Accounting &amp; Bookkeeping</span>
             </button>
             <button type="button" class="card svc-swipe-card" onClick="{{ pickAdvisory }}" style="align-items: flex-start; text-align: left; font: inherit; color: inherit; cursor: pointer; padding: 18px; gap: 8px; border: 1px solid var(--color-divider);" style-hover="border-color: var(--color-accent); box-shadow: var(--shadow-md);" style-active="border-color: var(--color-accent-700);">
               <span aria-hidden="true" style="display: inline-flex; align-items: center; justify-content: center; width: 34px; height: 34px; border-radius: var(--radius-md); background: var(--color-accent-100);">
                 <svg width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M4 20V10M11 20V4M18 20v-7" stroke="var(--color-accent-700)" stroke-width="1.6" stroke-linecap="round"/><path d="M3 20h18" stroke="var(--color-accent-700)" stroke-width="1.6" stroke-linecap="round"/></svg>
               </span>
-              <span style="font-family: var(--font-heading); font-weight: 600; font-size: 14.5px; letter-spacing: -0.01em;">Financial advisory services</span>
+              <span style="font-family: var(--font-heading); font-weight: 600; font-size: 14.5px; letter-spacing: -0.01em;">Cash Flow &amp; Business Advisory</span>
+            </button>
+            <button type="button" class="card svc-swipe-card" onClick="{{ pickGuidance }}" style="align-items: flex-start; text-align: left; font: inherit; color: inherit; cursor: pointer; padding: 18px; gap: 8px; border: 1px solid var(--color-divider);" style-hover="border-color: var(--color-accent); box-shadow: var(--shadow-md);" style-active="border-color: var(--color-accent-700);">
+              <span aria-hidden="true" style="display: inline-flex; align-items: center; justify-content: center; width: 34px; height: 34px; border-radius: var(--radius-md); background: var(--color-accent-100);">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none"><rect x="3" y="6" width="18" height="13" rx="2" stroke="var(--color-accent-700)" stroke-width="1.6"/><path d="M3 10h18" stroke="var(--color-accent-700)" stroke-width="1.6"/><circle cx="7" cy="15" r="1.2" fill="var(--color-accent-700)"/></svg>
+              </span>
+              <span style="font-family: var(--font-heading); font-weight: 600; font-size: 14.5px; letter-spacing: -0.01em;">Personal Financial Guidance</span>
+            </button>
+            <button type="button" class="card svc-swipe-card" onClick="{{ pickTaxes }}" style="align-items: flex-start; text-align: left; font: inherit; color: inherit; cursor: pointer; padding: 18px; gap: 8px; border: 1px solid var(--color-divider);" style-hover="border-color: var(--color-accent); box-shadow: var(--shadow-md);" style-active="border-color: var(--color-accent-700);">
+              <span aria-hidden="true" style="display: inline-flex; align-items: center; justify-content: center; width: 34px; height: 34px; border-radius: var(--radius-md); background: var(--color-accent-100);">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M6 2h9l5 5v15a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1Z" stroke="var(--color-accent-700)" stroke-width="1.6" stroke-linejoin="round"/><path d="M15 2v5h5" stroke="var(--color-accent-700)" stroke-width="1.6" stroke-linejoin="round"/><path d="M8.5 13h7M8.5 16.5h7M8.5 9.5h3" stroke="var(--color-accent-700)" stroke-width="1.6" stroke-linecap="round"/></svg>
+              </span>
+              <span style="font-family: var(--font-heading); font-weight: 600; font-size: 14.5px; letter-spacing: -0.01em;">Personal &amp; Business Tax Preparation</span>
+            </button>
+            <button type="button" class="card svc-swipe-card" onClick="{{ pickPlanning }}" style="align-items: flex-start; text-align: left; font: inherit; color: inherit; cursor: pointer; padding: 18px; gap: 8px; border: 1px solid var(--color-divider);" style-hover="border-color: var(--color-accent); box-shadow: var(--shadow-md);" style-active="border-color: var(--color-accent-700);">
+              <span aria-hidden="true" style="display: inline-flex; align-items: center; justify-content: center; width: 34px; height: 34px; border-radius: var(--radius-md); background: var(--color-accent-100);">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M3 17c2.5-6 4.5-9 6.5-9s2 3.5 4 3.5 3-5.5 5.5-5.5" stroke="var(--color-accent-700)" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/><path d="M15.5 6.3 19.5 5.7 19 9.7" stroke="var(--color-accent-700)" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+              <span style="font-family: var(--font-heading); font-weight: 600; font-size: 14.5px; letter-spacing: -0.01em;">Tax Planning</span>
             </button>
             <button type="button" class="card svc-swipe-card" onClick="{{ pickRetirement }}" style="align-items: flex-start; text-align: left; font: inherit; color: inherit; cursor: pointer; padding: 18px; gap: 8px; border: 1px solid var(--color-divider);" style-hover="border-color: var(--color-accent); box-shadow: var(--shadow-md);" style-active="border-color: var(--color-accent-700);">
               <span aria-hidden="true" style="display: inline-flex; align-items: center; justify-content: center; width: 34px; height: 34px; border-radius: var(--radius-md); background: var(--color-accent-100);">
                 <svg width="17" height="17" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="var(--color-accent-700)" stroke-width="1.6"/><path d="M12 7v5l3.5 2" stroke="var(--color-accent-700)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
               </span>
-              <span style="font-family: var(--font-heading); font-weight: 600; font-size: 14.5px; letter-spacing: -0.01em;">Retirement planning</span>
+              <span style="font-family: var(--font-heading); font-weight: 600; font-size: 14.5px; letter-spacing: -0.01em;">Retirement Tax Planning</span>
+            </button>
+            <button type="button" class="card svc-swipe-card" onClick="{{ pickIRS }}" style="align-items: flex-start; text-align: left; font: inherit; color: inherit; cursor: pointer; padding: 18px; gap: 8px; border: 1px solid var(--color-divider);" style-hover="border-color: var(--color-accent); box-shadow: var(--shadow-md);" style-active="border-color: var(--color-accent-700);">
+              <span aria-hidden="true" style="display: inline-flex; align-items: center; justify-content: center; width: 34px; height: 34px; border-radius: var(--radius-md); background: var(--color-accent-100);">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M3 6h18v12H3V6Z" stroke="var(--color-accent-700)" stroke-width="1.6" stroke-linejoin="round"/><path d="M3 7l9 6 9-6" stroke="var(--color-accent-700)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+              <span style="font-family: var(--font-heading); font-weight: 600; font-size: 14.5px; letter-spacing: -0.01em;">IRS Notices &amp; Tax Resolution</span>
             </button>
           </div>
         </section>
@@ -310,40 +333,67 @@ a:hover { color: var(--color-accent); }
 
         <section class="reveal" style="padding: 0 0 84px;">
           <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px;">
-            <button type="button" class="card" onClick="{{ pickTaxes }}" style="align-items: stretch; text-align: left; font: inherit; color: inherit; cursor: pointer; padding: 28px; gap: 10px; border: 1px solid var(--color-divider);" style-hover="border-color: var(--color-accent); box-shadow: var(--shadow-md);" style-active="border-color: var(--color-accent-700);">
+            <button type="button" class="card" onClick="{{ pickAccounting }}" style="align-items: stretch; text-align: left; font: inherit; color: inherit; cursor: pointer; padding: 28px; gap: 10px; border: 1px solid var(--color-divider);" style-hover="border-color: var(--color-accent); box-shadow: var(--shadow-md);" style-active="border-color: var(--color-accent-700);">
               <span aria-hidden="true" style="display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; border-radius: var(--radius-md); background: var(--color-accent-100);">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M6 2h9l5 5v15a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1Z" stroke="var(--color-accent-700)" stroke-width="1.6" stroke-linejoin="round"/><path d="M15 2v5h5" stroke="var(--color-accent-700)" stroke-width="1.6" stroke-linejoin="round"/><path d="M8.5 13h7M8.5 16.5h7M8.5 9.5h3" stroke="var(--color-accent-700)" stroke-width="1.6" stroke-linecap="round"/></svg>
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><rect x="4" y="3" width="16" height="18" rx="2" stroke="var(--color-accent-700)" stroke-width="1.6"/><path d="M8 8h8M8 12h8M8 16h5" stroke="var(--color-accent-700)" stroke-width="1.6" stroke-linecap="round"/></svg>
               </span>
-              <span style="font-family: var(--font-heading); font-weight: 600; font-size: 24px; line-height: 30px; letter-spacing: -0.015em;">Personal and business taxes</span>
-              <span style="font-size: 15px; line-height: 26px; color: color-mix(in srgb, var(--color-text) 80%, transparent);">Federal and state returns for individuals, sole proprietors, partnerships, S corporations, and LLCs, including multi-state income, rental property, K-1s, amendments, and IRS notices.</span>
-              <span style="font-size: 12px; line-height: 22px; letter-spacing: 0.04em; text-transform: uppercase; color: color-mix(in srgb, var(--color-text) 62%, transparent); margin-top: 4px;">Individual · Schedule C · Partnership · S-corp</span>
-              <span style="font-size: 13px; color: var(--color-accent-700); margin-top: 10px;">Request this →</span>
-            </button>
-            <button type="button" class="card" onClick="{{ pickPlanning }}" style="align-items: stretch; text-align: left; font: inherit; color: inherit; cursor: pointer; padding: 28px; gap: 10px; border: 1px solid var(--color-divider);" style-hover="border-color: var(--color-accent); box-shadow: var(--shadow-md);" style-active="border-color: var(--color-accent-700);">
-              <span aria-hidden="true" style="display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; border-radius: var(--radius-md); background: var(--color-accent-100);">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M3 17c2.5-6 4.5-9 6.5-9s2 3.5 4 3.5 3-5.5 5.5-5.5" stroke="var(--color-accent-700)" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/><path d="M15.5 6.3 19.5 5.7 19 9.7" stroke="var(--color-accent-700)" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              </span>
-              <span style="font-family: var(--font-heading); font-weight: 600; font-size: 24px; line-height: 30px; letter-spacing: -0.015em;">Tax planning</span>
-              <span style="font-size: 15px; line-height: 26px; color: color-mix(in srgb, var(--color-text) 80%, transparent);">Proactive planning completed before year end, covering entity selection, compensation strategy, quarterly estimates, equipment timing, and projections for significant financial events.</span>
-              <span style="font-size: 12px; line-height: 22px; letter-spacing: 0.04em; text-transform: uppercase; color: color-mix(in srgb, var(--color-text) 62%, transparent); margin-top: 4px;">Projections · Estimates · Entity choice · Timing</span>
+              <span style="font-family: var(--font-heading); font-weight: 600; font-size: 24px; line-height: 30px; letter-spacing: -0.015em;">Accounting &amp; Bookkeeping</span>
+              <span style="font-size: 15px; line-height: 26px; color: color-mix(in srgb, var(--color-text) 80%, transparent);">Keep your business finances organized and understand how your business is performing. Services include bookkeeping, account reconciliations, cleanup of existing records, and monthly financial reporting. We'll review the numbers together so you understand your income, expenses, and financial position.</span>
+              <span style="font-size: 12px; line-height: 22px; letter-spacing: 0.04em; text-transform: uppercase; color: color-mix(in srgb, var(--color-text) 62%, transparent); margin-top: 4px;">Bookkeeping · Reconciliations · Cleanup · Reporting</span>
               <span style="font-size: 13px; color: var(--color-accent-700); margin-top: 10px;">Request this →</span>
             </button>
             <button type="button" class="card" onClick="{{ pickAdvisory }}" style="align-items: stretch; text-align: left; font: inherit; color: inherit; cursor: pointer; padding: 28px; gap: 10px; border: 1px solid var(--color-divider);" style-hover="border-color: var(--color-accent); box-shadow: var(--shadow-md);" style-active="border-color: var(--color-accent-700);">
               <span aria-hidden="true" style="display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; border-radius: var(--radius-md); background: var(--color-accent-100);">
                 <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M4 20V10M11 20V4M18 20v-7" stroke="var(--color-accent-700)" stroke-width="1.6" stroke-linecap="round"/><path d="M3 20h18" stroke="var(--color-accent-700)" stroke-width="1.6" stroke-linecap="round"/></svg>
               </span>
-              <span style="font-family: var(--font-heading); font-weight: 600; font-size: 24px; line-height: 30px; letter-spacing: -0.015em;">Financial advisory services</span>
-              <span style="font-size: 15px; line-height: 26px; color: color-mix(in srgb, var(--color-text) 80%, transparent);">A comprehensive review of cash flow, budgeting, debt, and financing decisions, with a clear recommendation on whether a purchase, hire, or loan is the right move.</span>
-              <span style="font-size: 12px; line-height: 22px; letter-spacing: 0.04em; text-transform: uppercase; color: color-mix(in srgb, var(--color-text) 62%, transparent); margin-top: 4px;">Cash flow · Budgeting · Bookkeeping · Review</span>
+              <span style="font-family: var(--font-heading); font-weight: 600; font-size: 24px; line-height: 30px; letter-spacing: -0.015em;">Cash Flow &amp; Business Advisory</span>
+              <span style="font-size: 15px; line-height: 26px; color: color-mix(in srgb, var(--color-text) 80%, transparent);">Plan for upcoming expenses and make informed business decisions. I help business owners develop cash-flow forecasts, build budgets, review profitability, and evaluate the financial impact of hiring, purchases, or financing. Each engagement focuses on your priorities and practical steps you can take.</span>
+              <span style="font-size: 12px; line-height: 22px; letter-spacing: 0.04em; text-transform: uppercase; color: color-mix(in srgb, var(--color-text) 62%, transparent); margin-top: 4px;">Forecasting · Budgeting · Profitability · Financing</span>
+              <span style="font-size: 13px; color: var(--color-accent-700); margin-top: 10px;">Request this →</span>
+            </button>
+            <button type="button" class="card" onClick="{{ pickGuidance }}" style="align-items: stretch; text-align: left; font: inherit; color: inherit; cursor: pointer; padding: 28px; gap: 10px; border: 1px solid var(--color-divider);" style-hover="border-color: var(--color-accent); box-shadow: var(--shadow-md);" style-active="border-color: var(--color-accent-700);">
+              <span aria-hidden="true" style="display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; border-radius: var(--radius-md); background: var(--color-accent-100);">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><rect x="3" y="6" width="18" height="13" rx="2" stroke="var(--color-accent-700)" stroke-width="1.6"/><path d="M3 10h18" stroke="var(--color-accent-700)" stroke-width="1.6"/><circle cx="7" cy="15" r="1.2" fill="var(--color-accent-700)"/></svg>
+              </span>
+              <span style="font-family: var(--font-heading); font-weight: 600; font-size: 24px; line-height: 30px; letter-spacing: -0.015em;">Personal Financial Guidance</span>
+              <span style="font-size: 15px; line-height: 26px; color: color-mix(in srgb, var(--color-text) 80%, transparent);">Understand where your money is going and how to plan for your goals. Together, we can review your income, spending, savings, and debt; compare repayment options; and prepare for major expenses. My approach considers your immediate cash needs, long-term goals, and the trade-offs involved in each decision.</span>
+              <span style="font-size: 12px; line-height: 22px; letter-spacing: 0.04em; text-transform: uppercase; color: color-mix(in srgb, var(--color-text) 62%, transparent); margin-top: 4px;">Income · Spending · Savings · Debt</span>
+              <span style="font-size: 13px; color: var(--color-accent-700); margin-top: 10px;">Request this →</span>
+            </button>
+            <button type="button" class="card" onClick="{{ pickTaxes }}" style="align-items: stretch; text-align: left; font: inherit; color: inherit; cursor: pointer; padding: 28px; gap: 10px; border: 1px solid var(--color-divider);" style-hover="border-color: var(--color-accent); box-shadow: var(--shadow-md);" style-active="border-color: var(--color-accent-700);">
+              <span aria-hidden="true" style="display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; border-radius: var(--radius-md); background: var(--color-accent-100);">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M6 2h9l5 5v15a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1Z" stroke="var(--color-accent-700)" stroke-width="1.6" stroke-linejoin="round"/><path d="M15 2v5h5" stroke="var(--color-accent-700)" stroke-width="1.6" stroke-linejoin="round"/><path d="M8.5 13h7M8.5 16.5h7M8.5 9.5h3" stroke="var(--color-accent-700)" stroke-width="1.6" stroke-linecap="round"/></svg>
+              </span>
+              <span style="font-family: var(--font-heading); font-weight: 600; font-size: 24px; line-height: 30px; letter-spacing: -0.015em;">Personal &amp; Business Tax Preparation</span>
+              <span style="font-size: 15px; line-height: 26px; color: color-mix(in srgb, var(--color-text) 80%, transparent);">Prepare and file your personal and business tax returns with a clear understanding of the results. Services cover federal and state returns for individuals, self-employed professionals, and businesses, including rental income, investment activity, and multistate filing needs. I'll review the relevant deductions and credits, explain your return, and answer your questions before filing.</span>
+              <span style="font-size: 12px; line-height: 22px; letter-spacing: 0.04em; text-transform: uppercase; color: color-mix(in srgb, var(--color-text) 62%, transparent); margin-top: 4px;">Individual · Self-employed · Business · Multistate</span>
+              <span style="font-size: 13px; color: var(--color-accent-700); margin-top: 10px;">Request this →</span>
+            </button>
+            <button type="button" class="card" onClick="{{ pickPlanning }}" style="align-items: stretch; text-align: left; font: inherit; color: inherit; cursor: pointer; padding: 28px; gap: 10px; border: 1px solid var(--color-divider);" style-hover="border-color: var(--color-accent); box-shadow: var(--shadow-md);" style-active="border-color: var(--color-accent-700);">
+              <span aria-hidden="true" style="display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; border-radius: var(--radius-md); background: var(--color-accent-100);">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M3 17c2.5-6 4.5-9 6.5-9s2 3.5 4 3.5 3-5.5 5.5-5.5" stroke="var(--color-accent-700)" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/><path d="M15.5 6.3 19.5 5.7 19 9.7" stroke="var(--color-accent-700)" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+              <span style="font-family: var(--font-heading); font-weight: 600; font-size: 24px; line-height: 30px; letter-spacing: -0.015em;">Tax Planning</span>
+              <span style="font-size: 15px; line-height: 26px; color: color-mix(in srgb, var(--color-text) 80%, transparent);">Understand how decisions today could affect your next tax bill. Services include tax projections, estimated-payment calculations, and analysis of changes in income, business structure, or significant transactions. We'll identify planning opportunities and develop next steps based on your circumstances.</span>
+              <span style="font-size: 12px; line-height: 22px; letter-spacing: 0.04em; text-transform: uppercase; color: color-mix(in srgb, var(--color-text) 62%, transparent); margin-top: 4px;">Projections · Estimates · Structure · Transactions</span>
               <span style="font-size: 13px; color: var(--color-accent-700); margin-top: 10px;">Request this →</span>
             </button>
             <button type="button" class="card" onClick="{{ pickRetirement }}" style="align-items: stretch; text-align: left; font: inherit; color: inherit; cursor: pointer; padding: 28px; gap: 10px; border: 1px solid var(--color-divider);" style-hover="border-color: var(--color-accent); box-shadow: var(--shadow-md);" style-active="border-color: var(--color-accent-700);">
               <span aria-hidden="true" style="display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; border-radius: var(--radius-md); background: var(--color-accent-100);">
                 <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="var(--color-accent-700)" stroke-width="1.6"/><path d="M12 7v5l3.5 2" stroke="var(--color-accent-700)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
               </span>
-              <span style="font-family: var(--font-heading); font-weight: 600; font-size: 24px; line-height: 30px; letter-spacing: -0.015em;">Retirement planning</span>
-              <span style="font-size: 15px; line-height: 26px; color: color-mix(in srgb, var(--color-text) 80%, transparent);">Selection and funding of the right retirement plan, including IRA, Roth, SEP, SIMPLE, and solo 401(k) options, with contribution and conversion calculations, withdrawal sequencing, and required distributions.</span>
-              <span style="font-size: 12px; line-height: 22px; letter-spacing: 0.04em; text-transform: uppercase; color: color-mix(in srgb, var(--color-text) 62%, transparent); margin-top: 4px;">IRA &amp; Roth · SEP &amp; SIMPLE · Solo 401(k)</span>
+              <span style="font-family: var(--font-heading); font-weight: 600; font-size: 24px; line-height: 30px; letter-spacing: -0.015em;">Retirement Tax Planning</span>
+              <span style="font-size: 15px; line-height: 26px; color: color-mix(in srgb, var(--color-text) 80%, transparent);">Understand the tax considerations behind saving for retirement and accessing those savings. I help clients compare retirement-account contribution options, evaluate the tax impact of Roth conversions, and plan for withdrawals and required distributions. The focus is on how retirement tax decisions fit your cash needs and long-term goals.</span>
+              <span style="font-size: 12px; line-height: 22px; letter-spacing: 0.04em; text-transform: uppercase; color: color-mix(in srgb, var(--color-text) 62%, transparent); margin-top: 4px;">Contributions · Roth conversions · Withdrawals · RMDs</span>
+              <span style="font-size: 13px; color: var(--color-accent-700); margin-top: 10px;">Request this →</span>
+            </button>
+            <button type="button" class="card" onClick="{{ pickIRS }}" style="align-items: stretch; text-align: left; font: inherit; color: inherit; cursor: pointer; padding: 28px; gap: 10px; border: 1px solid var(--color-divider);" style-hover="border-color: var(--color-accent); box-shadow: var(--shadow-md);" style-active="border-color: var(--color-accent-700);">
+              <span aria-hidden="true" style="display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; border-radius: var(--radius-md); background: var(--color-accent-100);">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M3 6h18v12H3V6Z" stroke="var(--color-accent-700)" stroke-width="1.6" stroke-linejoin="round"/><path d="M3 7l9 6 9-6" stroke="var(--color-accent-700)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+              <span style="font-family: var(--font-heading); font-weight: 600; font-size: 24px; line-height: 30px; letter-spacing: -0.015em;">IRS Notices &amp; Tax Resolution</span>
+              <span style="font-size: 15px; line-height: 26px; color: color-mix(in srgb, var(--color-text) 80%, transparent);">Understand an IRS notice and your options for responding. I help clients review tax account information, address outstanding filing requirements, and evaluate payment arrangements or potential penalty relief. Depending on your circumstances, support may also include assessing eligibility for an offer in compromise. We'll review the available options and establish a clear scope before work begins.</span>
+              <span style="font-size: 12px; line-height: 22px; letter-spacing: 0.04em; text-transform: uppercase; color: color-mix(in srgb, var(--color-text) 62%, transparent); margin-top: 4px;">Notices · Filing requirements · Payment plans · Penalty relief</span>
               <span style="font-size: 13px; color: var(--color-accent-700); margin-top: 10px;">Request this →</span>
             </button>
           </div>
@@ -370,8 +420,12 @@ a:hover { color: var(--color-accent); }
 
         <section class="reveal" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 42px clamp(28px, 6vw, 96px); padding: 0 0 48px;">
           <div>
-            <p style="font-size: 17px; line-height: 30px; margin: 0; color: color-mix(in srgb, var(--color-text) 85%, transparent);">Jaison Joseph, CPA, founded J Joseph Enterprises LLC to prepare tax returns the way he would want his own handled: carefully, in plain language, and by the same person every year.</p>
-            <p style="font-size: 15.5px; line-height: 28px; margin: 28px 0 0; color: color-mix(in srgb, var(--color-text) 78%, transparent);">Every figure is explained before a return is filed, and every question gets a straight answer. Clients come first, and nothing about the process is left unclear.</p>
+            <p style="font-size: 17px; line-height: 30px; margin: 0; color: color-mix(in srgb, var(--color-text) 85%, transparent);">I'm Jaison Joseph, a licensed Certified Public Accountant based in New York City and the founder of J Joseph Enterprises LLC. I work with individuals and business owners who want a clearer understanding of their finances and practical support in managing them.</p>
+            <p style="font-size: 15.5px; line-height: 28px; margin: 28px 0 0; color: color-mix(in srgb, var(--color-text) 78%, transparent);">My experience spans accounting, treasury, real estate, and credit funds, with a focus on cash management, financial reporting, forecasting, and day-to-day financial operations. Combined with my personal investing experience, this background shapes how I think about liquidity, long-term goals, and the trade-offs involved in financial decisions.</p>
+            <p style="font-size: 15.5px; line-height: 28px; margin: 28px 0 0; color: color-mix(in srgb, var(--color-text) 78%, transparent);">I bring that perspective to helping clients organize their books, manage cash flow, prepare personal and business tax returns, and plan for future tax obligations. My approach considers how these areas connect to your broader financial goals.</p>
+            <p style="font-size: 15.5px; line-height: 28px; margin: 28px 0 0; color: color-mix(in srgb, var(--color-text) 78%, transparent);">I founded J Joseph Enterprises LLC to give clients a dependable person to turn to as their financial needs evolve. Whether you're growing a business, preparing for a major expense, filing your taxes, or looking to get your finances in order, I take the time to understand your priorities and help you develop a plan that fits your situation.</p>
+            <p style="font-size: 15.5px; line-height: 28px; margin: 28px 0 0; color: color-mix(in srgb, var(--color-text) 78%, transparent);">You'll work directly with me, with clear explanations, straightforward communication, and an agreed scope and fee before work begins. My goal is for you to understand your numbers, feel comfortable asking questions, and know what steps to take next.</p>
+            <p style="font-size: 15.5px; line-height: 28px; margin: 28px 0 0; color: color-mix(in srgb, var(--color-text) 78%, transparent);">Let's talk about your goals and how I can help.</p>
             <p style="font-size: 15.5px; line-height: 28px; margin: 28px 0 0; font-style: italic; color: color-mix(in srgb, var(--color-text) 78%, transparent);">"I built this firm on the idea that good tax work should never feel like a black box. That hasn't changed, and it won't."</p>
             <p style="font-size: 14px; line-height: 24px; margin: 12px 0 0; font-family: var(--font-heading); font-weight: 600;">Jaison Joseph, Founder</p>
           </div>
@@ -388,10 +442,13 @@ a:hover { color: var(--color-accent); }
             <p style="display: flex; align-items: baseline; gap: 8px; margin: 0; font-size: 15.5px; line-height: 26px;"><span>Credentials</span><span style="flex: 1; min-width: 28px; align-self: flex-end; margin-bottom: 0.34em; border-bottom: 1px dotted color-mix(in srgb, var(--color-text) 45%, transparent);"></span><span style="font-family: var(--font-heading); font-weight: 600;">CPA</span></p>
             <hr style="height: 0; border: 0; border-top: 1px solid var(--color-text); margin: 10px 0 14px;" />
             <div class="reveal-stagger" style="display: flex; flex-wrap: wrap; gap: 8px;">
-              <span class="tag tag-accent">Personal &amp; business taxes</span>
-              <span class="tag tag-accent">Tax planning</span>
-              <span class="tag tag-accent">Financial advisory</span>
-              <span class="tag tag-accent">Retirement planning</span>
+              <span class="tag tag-accent">Accounting &amp; Bookkeeping</span>
+              <span class="tag tag-accent">Cash Flow &amp; Business Advisory</span>
+              <span class="tag tag-accent">Personal Financial Guidance</span>
+              <span class="tag tag-accent">Personal &amp; Business Tax Preparation</span>
+              <span class="tag tag-accent">Tax Planning</span>
+              <span class="tag tag-accent">Retirement Tax Planning</span>
+              <span class="tag tag-accent">IRS Notices &amp; Tax Resolution</span>
             </div>
           </div>
         </section>
@@ -405,10 +462,8 @@ a:hover { color: var(--color-accent); }
           <h1 style="font-family: var(--font-heading); font-weight: 600; font-size: clamp(38px, 5vw, 62px); line-height: 1.08; letter-spacing: -0.02em; margin: 0 0 0 -0.035em;">Contact me</h1>
           <p style="display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 14px; margin: 20px 0 0; font-size: 14px; color: color-mix(in srgb, var(--color-text) 75%, transparent);">
             <a href="mailto:team@jjosephcpa.com" style="text-decoration: none;">team@jjosephcpa.com</a>
-            <span aria-hidden="true">&middot;</span>
-            <span>Mon&ndash;Fri, 9&ndash;6</span>
           </p>
-          <p style="font-size: 13px; line-height: 22px; margin: 10px 0 0; max-width: 640px; color: color-mix(in srgb, var(--color-text) 62%, transparent);">During filing season, email is fastest. Please don't send Social Security numbers or bank details by email; a secure link will be sent once we've spoken.</p>
+          <p style="font-size: 13px; line-height: 22px; margin: 10px 0 0; max-width: 640px; color: color-mix(in srgb, var(--color-text) 62%, transparent);">Please don't send Social Security numbers or bank details by email; a secure link will be sent once we've spoken.</p>
         </section>
 
         <section class="reveal" style="padding: 0 0 112px;">
@@ -434,10 +489,13 @@ a:hover { color: var(--color-accent); }
                 <div class="field">
                   <label for="c-service" style="font-size: 12px;">What do you need?</label>
                   <select class="input" id="c-service" name="service" onChange="{{ setService }}" value="{{ service }}">
-                    <option value="Personal and business taxes">Personal and business taxes</option>
-                    <option value="Tax planning">Tax planning</option>
-                    <option value="Financial advisory services">Financial advisory services</option>
-                    <option value="Retirement planning">Retirement planning</option>
+                    <option value="Accounting & Bookkeeping">Accounting &amp; Bookkeeping</option>
+                    <option value="Cash Flow & Business Advisory">Cash Flow &amp; Business Advisory</option>
+                    <option value="Personal Financial Guidance">Personal Financial Guidance</option>
+                    <option value="Personal & Business Tax Preparation">Personal &amp; Business Tax Preparation</option>
+                    <option value="Tax Planning">Tax Planning</option>
+                    <option value="Retirement Tax Planning">Retirement Tax Planning</option>
+                    <option value="IRS Notices & Tax Resolution">IRS Notices &amp; Tax Resolution</option>
                     <option value="Not sure yet">Not sure yet</option>
                   </select>
                 </div>
@@ -509,7 +567,6 @@ a:hover { color: var(--color-accent); }
     <footer style="padding: 28px 0 56px; font-size: 13px; line-height: 28px; color: color-mix(in srgb, var(--color-text) 68%, transparent); border-top: 1px solid var(--color-divider); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px 28px;">
       <span>&copy; 2020 J Joseph Enterprises LLC. All rights reserved.</span>
       <span style="display: flex; gap: 8px 20px; flex-wrap: wrap;">
-        <span>Tax preparation · Planning · Advisory · Retirement</span>
         <a href="#privacy" onClick="{{ goPrivacy }}" style="color: inherit; text-decoration: underline; text-underline-offset: 3px;">Privacy Policy</a>
       </span>
     </footer>
@@ -523,7 +580,7 @@ a:hover { color: var(--color-accent); }
   &quot;askPreferredContact&quot;: { &quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: true, &quot;tsType&quot;: &quot;boolean&quot;, &quot;section&quot;: &quot;Contact form&quot; }
 }">
 class Component extends DCLogic {
-  state = { page: 'home', name: '', email: '', phone: '', service: 'Personal and business taxes', message: '', sent: false, error: false, sending: false, sendError: false, menuOpen: false };
+  state = { page: 'home', name: '', email: '', phone: '', service: 'Personal & Business Tax Preparation', message: '', sent: false, error: false, sending: false, sendError: false, menuOpen: false };
 
   componentDidMount() {
     this.applyAccent();
@@ -620,10 +677,13 @@ class Component extends DCLogic {
       menuOpen: s.menuOpen,
       menuOpenAttr: s.menuOpen ? 'true' : 'false',
       toggleMenu: () => this.toggleMenu(),
-      pickTaxes: this.pick('Personal and business taxes'),
-      pickPlanning: this.pick('Tax planning'),
-      pickAdvisory: this.pick('Financial advisory services'),
-      pickRetirement: this.pick('Retirement planning'),
+      pickAccounting: this.pick('Accounting & Bookkeeping'),
+      pickAdvisory: this.pick('Cash Flow & Business Advisory'),
+      pickGuidance: this.pick('Personal Financial Guidance'),
+      pickTaxes: this.pick('Personal & Business Tax Preparation'),
+      pickPlanning: this.pick('Tax Planning'),
+      pickRetirement: this.pick('Retirement Tax Planning'),
+      pickIRS: this.pick('IRS Notices & Tax Resolution'),
       name: s.name, email: s.email, phone: s.phone, service: s.service, message: s.message,
       setName: this.set('name'), setEmail: this.set('email'), setPhone: this.set('phone'),
       setService: this.set('service'), setMessage: this.set('message'),
